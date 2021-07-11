@@ -105,19 +105,11 @@ int ListInsert(_LPTYPENAME_ L, int i, ElemType e) {//长度不足2 正常1 错误0
 	if (L->length + 1 > _MAXSIZE_ || i > L->length || i < 0) return 2;
 
 #ifdef _SeqList_
-	/*int j = 0;
-	int temp[_MAXSIZE_] = { 0 };
-	for (j = 0; j < L->length; j++) {
-		temp[i] = L->data[i];
-	}*/
 	
 	ElemType* temp = (ElemType*)realloc(L->data, sizeof(ElemType)* (L->length + 1));
 	L->data = temp;
-	//printf("%u %u\n", _msize(temp),sizeof(_TYPENAME_));
 	if (!L->data) return 0;
-	/*for (j = 0; j < L->length; j++) {
-		L->data[i] = temp[i];
-	}*/
+
 #endif // _SeqList_
 
 	for (; pos > i; pos--) {
