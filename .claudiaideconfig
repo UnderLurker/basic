@@ -1,0 +1,22 @@
+﻿{
+  "BackgroundImageAbsolutePath": "F:\\VS2019背景图片\\75113917_p0.png",
+  "BackgroundImagesDirectoryAbsolutePath": "F:\\VS2019背景图片",
+  "ExpandToIDE": false,
+  "Extensions": ".png, .jpg, .gif, .bmp",
+  "ImageBackgroundType": 1,
+  "ImageFadeAnimationInterval": "PT0S",
+  "ImageStretch": 1,
+  "IsLimitToMainlyEditorWindow": false,
+  "LoopSlideshow": true,
+  "MaxHeight": 0,
+  "MaxWidth": 0,
+  "Opacity": 0.35,
+  "PositionHorizon": 1,
+  "PositionVertical": 1,
+  "ShuffleSlideshow": true,
+  "SoftEdgeX": 0,
+  "SoftEdgeY": 0,
+  "UpdateImageInterval": "PT1M",
+  "ViewBoxPointX": 0,
+  "ViewBoxPointY": 0
+}

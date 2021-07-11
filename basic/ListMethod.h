@@ -161,7 +161,7 @@ typedef struct LNode {
 	struct LNode* next;
 }LNode, * LinkList;
 
-#define _TYPENAME_ LinkList
+#define _LPTYPENAME_ LinkList
 #define _TYPENAME_ LNode
 
 void DeleteLNode(LinkList L, int pos) {
@@ -186,8 +186,23 @@ void DeleteLNode(LinkList L, int pos) {
 		head = head->next;
 		L = L->next;
 	}
-	L->next = nullptr;
+	L->next = NULL;
 	free(head);
+}
+
+//Á´±í·´×ª
+void Reserve(LinkList L) {
+	LinkList head = L->next->next;
+	LinkList pre = L->next;
+	LinkList temp = NULL;
+	L->next->next = NULL;
+	while (head) {
+		temp = head->next;
+		head->next = pre;
+		pre = head;
+		head = temp;
+	}
+	L->next = pre;
 }
 
 #endif // _LNODE_
@@ -222,6 +237,13 @@ void PrintReverseDNode(DLinkList L) {
 	}
 	printf("\n");
 }
+
+void DeleteDNode(DLinkList L, int pos) {
+	DLinkList goal = GetElem(L, pos);
+	goal->next->prior = goal->prior;
+	goal->prior->next = goal->next;
+}
+
 
 #endif // _DNODE_
 
@@ -324,12 +346,6 @@ void InsertLNode(_LPTYPENAME_ L, int pos, ElemType value) {
 
 	temp->next = pre->next;
 	pre->next = temp;
-}
-
-void DeleteDNode(DLinkList L, int pos) {
-	DLinkList goal = GetElem(L, pos);
-	goal->next->prior = goal->prior;
-	goal->prior->next = goal->next;
 }
 
 #endif
