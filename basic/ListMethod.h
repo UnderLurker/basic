@@ -57,6 +57,37 @@ typedef struct SqList {
 
 #if defined _SeqList_ || defined _SqList_
 
+void Reserve(_LPTYPENAME_ L) {
+	int front = 0, back = L->length - 1;
+	while (front < back) {
+		ElemType temp = L->data[front];
+		L->data[front] = L->data[back];
+		L->data[back] = temp;
+		front++;
+		back--;
+	}
+}
+
+//返回删除个数
+int DeleteAllElem(_LPTYPENAME_ L, ElemType e) {
+	int i = 0, count = 0;
+	for (; i < L->length; i++) {
+		if (L->data[i] == e) {
+			L->data[i] = L->data[L->length - 1];
+
+#ifdef _SeqList_
+			//printf("%d\n", &L->data[L->length - 1]);
+			//free(&L->data[L->length-1]);
+#endif // _SeqList_
+
+			L->length--;
+			count++;
+			i--;
+		}
+	}
+	return count;
+}
+
 void InitList(_LPTYPENAME_ L) {
 	L->length = 0;
 
@@ -101,15 +132,13 @@ void DestroyList(_LPTYPENAME_ L) {
 }
 
 int ListInsert(_LPTYPENAME_ L, int i, ElemType e) {//长度不足2 正常1 错误0
-	int pos = L->length;
+	int pos = L->length, j = 0;
 	if (L->length + 1 > _MAXSIZE_ || i > L->length || i < 0) return 2;
 
 #ifdef _SeqList_
-	
-	ElemType* temp = (ElemType*)realloc(L->data, sizeof(ElemType)* (L->length + 1));
-	L->data = temp;
+	L->data= (ElemType*)realloc(L->data, sizeof(ElemType) * (L->length + 1));
+	printf("%d\n", _msize(L->data));
 	if (!L->data) return 0;
-
 #endif // _SeqList_
 
 	for (; pos > i; pos--) {

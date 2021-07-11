@@ -1,10 +1,16 @@
-#include"LNode.h"
+#include "SeqList.h"
 int main() {
-	LinkList list = (LinkList)malloc(sizeof(LNode));
-	list->next = NULL;
-	List_HeadInsert(list);
-	PrintNode(list);
-	Reserve(list);
-	PrintNode(list);
+	lpSeqList list = (lpSeqList)malloc(sizeof(SeqList));
+	InitList(list);
+	ListInsert(list, 0, 4);
+	PrintList(list);
+	ListInsert(list, 0, 2);
+	PrintList(list);
+	ListInsert(list, 0, 2);
+	PrintList(list);
+	ListInsert(list, 0, 1);
+	PrintList(list);
+	DeleteAllElem(list, 2);
+	PrintList(list);
 	return 0;
 }
