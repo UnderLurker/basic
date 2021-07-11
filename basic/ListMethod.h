@@ -263,7 +263,7 @@ _LPTYPENAME_ List_TailInsert(_LPTYPENAME_ L) {
 	while (tempData != 999) {
 		_LPTYPENAME_ temp = (_LPTYPENAME_)malloc(sizeof(_TYPENAME_));
 		temp->data = tempData;
-		temp->next = nullptr;
+		temp->next = NULL;
 		tail->next = temp;
 
 #ifdef _DNODE_
